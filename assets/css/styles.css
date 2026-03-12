@@ -311,14 +311,53 @@ ul {
 }
 
 .skills__card {
+  --skill-accent: #3b82f6;
+  --skill-accent-soft: rgba(59, 130, 246, 0.12);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-color: rgba(147, 197, 253, 0.42);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.92));
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: transform;
 }
 
+.skills__card::before,
+.skills__card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.skills__card::before {
+  inset: -25% -10% auto;
+  height: 65%;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--skill-accent) 45%, transparent), transparent 68%);
+  opacity: 0.35;
+}
+
+.skills__card::after {
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--skill-accent) 58%, #ffffff);
+  opacity: 0;
+}
+
 .skills__card:hover {
-  transform: translateY(-7px) scale(1.02);
-  border-color: #93c5fd;
-  box-shadow: 0 18px 34px rgba(37, 99, 235, 0.16), 0 0 0 1px rgba(147, 197, 253, 0.5);
+  transform: translateY(-8px) scale(1.02);
+  border-color: color-mix(in srgb, var(--skill-accent) 65%, #bfdbfe);
+  box-shadow: 0 20px 36px color-mix(in srgb, var(--skill-accent) 28%, transparent), 0 0 0 1px color-mix(in srgb, var(--skill-accent) 35%, #dbeafe);
+}
+
+.skills__card:hover::before {
+  opacity: 0.65;
+  transform: translateY(-6px) scale(1.05);
+}
+
+.skills__card:hover::after {
+  opacity: 1;
 }
 
 .skills__card .card__title,
@@ -327,11 +366,48 @@ ul {
 }
 
 .skills__card:hover .card__title {
-  color: var(--color-primary-alt);
+  color: color-mix(in srgb, var(--skill-accent) 84%, #0f172a);
 }
 
 .skills__card:hover .card__list li {
-  color: #1e3a8a;
+  color: color-mix(in srgb, var(--skill-accent) 72%, #1e293b);
+}
+
+.skills__card[data-skill-accent="development"] {
+  --skill-accent: #2563eb;
+}
+
+.skills__card[data-skill-accent="engineering"] {
+  --skill-accent: #06b6d4;
+}
+
+.skills__card[data-skill-accent="creative"] {
+  --skill-accent: #8b5cf6;
+}
+
+.skill-meter {
+  margin-top: var(--space-2);
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(226, 232, 240, 0.6));
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.skill-meter__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--skill-accent) 78%, #60a5fa), color-mix(in srgb, var(--skill-accent) 65%, #a78bfa));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--skill-accent) 40%, transparent);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-reveal.is-visible .skill-meter__fill,
+.skills__card:hover .skill-meter__fill {
+  width: var(--fill-level, 82%);
 }
 
 .skill-reveal {
@@ -542,7 +618,8 @@ ul {
   .hero__profile,
   .hero__avatar,
   .skills__card,
-  .skill-reveal {
+  .skill-reveal,
+  .skill-meter__fill {
     transition: none;
     transform: none;
   }

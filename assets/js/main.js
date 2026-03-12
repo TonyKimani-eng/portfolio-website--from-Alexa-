@@ -111,22 +111,6 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
-/* ===== Wardrobe gallery image compatibility fallback ===== */
-const wardrobeImages = document.querySelectorAll('[aria-label="Wardrobe web app screenshots gallery"] .gallery__image');
-
-wardrobeImages.forEach((image) => {
-  if (image.src.endsWith('assets/img/warddrobe3.jpg')) {
-    image.addEventListener(
-      'error',
-      () => {
-        image.src = 'assets/img/warddrobe3.png';
-      },
-      { once: true }
-    );
-  }
-});
-
-
 /* ===== Interactive profile image tilt ===== */
 const heroProfile = document.querySelector('.hero__profile');
 const heroAvatar = document.querySelector('.hero__avatar');
