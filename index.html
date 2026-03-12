@@ -34,20 +34,40 @@
     <main>
       <section class="hero section" id="home">
         <div class="container hero__content">
-          <p class="hero__eyebrow">Aerospace Engineering Graduate</p>
-          <h1 class="hero__title">Tony Kimani</h1>
-          <h2 class="hero__subtitle">Aspiring Full Stack Developer</h2>
-          <p class="hero__description">
-            Building clean, practical web applications while transitioning from engineering into software development.
-          </p>
-          <div class="hero__actions">
-            <a href="#projects" class="button">View Projects</a>
-            <a href="#contact" class="button button--ghost">Contact Me</a>
+          <div class="hero__intro">
+            <p class="hero__eyebrow">Aerospace Engineering Graduate</p>
+            <h1 class="hero__title">Tony Kimani</h1>
+            <h2 class="hero__subtitle">Aspiring Full Stack Developer</h2>
+            <p class="hero__description">
+              Building clean, practical web applications while transitioning from engineering into software development.
+            </p>
+
+            <div class="hero__actions">
+              <a href="#projects" class="button">View Projects</a>
+              <a href="#contact" class="button button--ghost">Contact Me</a>
+            </div>
+
+            <ul class="hero__highlights">
+              <li>Engineering-first problem solving</li>
+              <li>Clean, user-focused web experiences</li>
+              <li>Continuous learning and growth mindset</li>
+            </ul>
           </div>
+
+          <aside class="hero__profile card" aria-label="Profile placeholder">
+            <div class="hero__avatar-placeholder">
+              <span>Profile photo</span>
+              <small>Replace with your image</small>
+            </div>
+            <div class="hero__profile-content">
+              <p class="hero__profile-label">Current Focus</p>
+              <p class="hero__profile-value">Python, web fundamentals, and practical full stack projects</p>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <section class="section" id="about">
+      <section class="section section--panel" id="about">
         <div class="container narrow">
           <h2 class="section__title">About</h2>
           <p class="section__text">
@@ -92,29 +112,42 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
+      <section class="section section--panel" id="projects">
         <div class="container">
-          <h2 class="section__title">Projects</h2>
+          <div class="section__heading">
+            <h2 class="section__title">Projects</h2>
+            <p class="section__lead">A few projects that reflect my learning journey and practical software interests.</p>
+          </div>
+
           <div class="projects__grid">
             <article class="project card">
-              <h3 class="card__title">Poker Game in Python</h3>
-              <p class="project__description">
-                A Python-based game project focused on logic, rules handling, and clean command-flow implementation.
-              </p>
+              <div class="project__media" role="img" aria-label="Poker game screenshot placeholder">Project screenshot</div>
+              <div class="project__content">
+                <h3 class="card__title">Poker Game in Python</h3>
+                <p class="project__description">
+                  A Python-based game project focused on logic, rules handling, and clean command-flow implementation.
+                </p>
+              </div>
             </article>
 
             <article class="project card">
-              <h3 class="card__title">Personal Portfolio Website</h3>
-              <p class="project__description">
-                A clean, responsive portfolio website to present my profile, skills, and projects in a professional format.
-              </p>
+              <div class="project__media" role="img" aria-label="Portfolio website screenshot placeholder">Project screenshot</div>
+              <div class="project__content">
+                <h3 class="card__title">Personal Portfolio Website</h3>
+                <p class="project__description">
+                  A clean, responsive portfolio website to present my profile, skills, and projects in a professional format.
+                </p>
+              </div>
             </article>
 
             <article class="project card">
-              <h3 class="card__title">Wardrobe Web App</h3>
-              <p class="project__description">
-                A practical web app concept for organizing outfits and clothing items with a user-focused experience.
-              </p>
+              <div class="project__media" role="img" aria-label="Wardrobe app screenshot placeholder">Project screenshot</div>
+              <div class="project__content">
+                <h3 class="card__title">Wardrobe Web App</h3>
+                <p class="project__description">
+                  A practical web app concept for organizing outfits and clothing items with a user-focused experience.
+                </p>
+              </div>
             </article>
           </div>
         </div>
@@ -131,6 +164,7 @@
             <a href="https://github.com/TonyKimani-eng" target="_blank" rel="noreferrer">GitHub: TonyKimani-eng</a>
             <a href="https://www.linkedin.com/in/tonykimaninganga" target="_blank" rel="noreferrer">LinkedIn: tonykimaninganga</a>
           </div>
+          <p class="contact__hint center">Add more links easily by duplicating a contact item above (e.g., X, Behance, Dribbble).</p>
         </div>
       </section>
     </main>
