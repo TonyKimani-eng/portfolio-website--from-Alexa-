@@ -1,0 +1,12 @@
+# Engineering gallery placeholders should be added manually, not committed.
+assets/img/engineering/*.jpg
+assets/img/engineering/*.jpeg
+assets/img/engineering/*.png
+assets/img/engineering/*.gif
+
+# Common local/generated artifacts
+*.pyc
+*.pyo
+.DS_Store
+node_modules/
+dist/
