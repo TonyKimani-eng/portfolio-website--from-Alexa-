@@ -177,7 +177,48 @@ projectGalleries.forEach((gallery) => {
 const modal = document.getElementById('gallery-modal');
 const modalImage = document.getElementById('gallery-modal-image');
 const modalClose = document.getElementById('gallery-modal-close');
+const modalPrev = document.getElementById('gallery-modal-prev');
+const modalNext = document.getElementById('gallery-modal-next');
 const galleryImages = document.querySelectorAll('.gallery__image');
+
+let activeGalleryImages = [];
+let activeImageIndex = 0;
+let touchStartX = null;
+
+function setModalImage(index, direction = 'next') {
+  if (!modalImage || !activeGalleryImages.length) return;
+
+  activeImageIndex = (index + activeGalleryImages.length) % activeGalleryImages.length;
+  const targetImage = activeGalleryImages[activeImageIndex];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion) {
+    modalImage.src = targetImage.src;
+    modalImage.alt = targetImage.alt;
+    return;
+  }
+
+  modalImage.classList.add('is-transitioning', direction === 'prev' ? 'is-transitioning-prev' : 'is-transitioning-next');
+
+  window.setTimeout(() => {
+    modalImage.src = targetImage.src;
+    modalImage.alt = targetImage.alt;
+    modalImage.classList.remove('is-transitioning', 'is-transitioning-prev', 'is-transitioning-next');
+  }, 160);
+}
+
+function openGalleryModal(selectedImage) {
+  if (!modal || !modalImage || !selectedImage) return;
+
+  const projectCard = selectedImage.closest('.project');
+  activeGalleryImages = projectCard ? Array.from(projectCard.querySelectorAll('.gallery__image')) : [selectedImage];
+  activeImageIndex = Math.max(activeGalleryImages.indexOf(selectedImage), 0);
+
+  setModalImage(activeImageIndex, 'next');
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
 
 function closeGalleryModal() {
   if (!modal) return;
@@ -187,28 +228,61 @@ function closeGalleryModal() {
   document.body.style.overflow = '';
 }
 
+function showNextImage() {
+  if (!modal?.classList.contains('show')) return;
+  setModalImage(activeImageIndex + 1, 'next');
+}
+
+function showPreviousImage() {
+  if (!modal?.classList.contains('show')) return;
+  setModalImage(activeImageIndex - 1, 'prev');
+}
+
 if (modal && modalImage) {
   galleryImages.forEach((image) => {
-    image.addEventListener('click', () => {
-      modalImage.src = image.src;
-      modalImage.alt = image.alt;
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
+    image.addEventListener('click', () => openGalleryModal(image));
   });
 }
 
+modalPrev?.addEventListener('click', showPreviousImage);
+modalNext?.addEventListener('click', showNextImage);
 modalClose?.addEventListener('click', closeGalleryModal);
+
 modal?.addEventListener('click', (event) => {
   if (event.target === modal) {
     closeGalleryModal();
   }
 });
 
+modal?.addEventListener('touchstart', (event) => {
+  touchStartX = event.changedTouches[0]?.clientX ?? null;
+}, { passive: true });
+
+modal?.addEventListener('touchend', (event) => {
+  if (touchStartX === null) return;
+
+  const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX;
+  const distance = touchEndX - touchStartX;
+  if (Math.abs(distance) > 45) {
+    if (distance < 0) showNextImage();
+    else showPreviousImage();
+  }
+
+  touchStartX = null;
+}, { passive: true });
+
 window.addEventListener('keydown', (event) => {
+  if (!modal?.classList.contains('show')) {
+    if (event.key === 'Escape') closeGalleryModal();
+    return;
+  }
+
   if (event.key === 'Escape') {
     closeGalleryModal();
+  } else if (event.key === 'ArrowRight') {
+    showNextImage();
+  } else if (event.key === 'ArrowLeft') {
+    showPreviousImage();
   }
 });
 
