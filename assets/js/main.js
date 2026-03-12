@@ -110,3 +110,25 @@ window.addEventListener('keydown', (event) => {
     closeGalleryModal();
   }
 });
+
+
+/* ===== Interactive profile image tilt ===== */
+const heroProfile = document.querySelector('.hero__profile');
+const heroAvatar = document.querySelector('.hero__avatar');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (heroProfile && heroAvatar && !prefersReducedMotion) {
+  heroProfile.addEventListener('mousemove', (event) => {
+    const bounds = heroProfile.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+
+    heroAvatar.style.transform = `scale(1.03) rotate(${-x * 1.1}deg) translateY(-2px)`;
+    heroProfile.style.transform = `translateY(-5px) rotateX(${y * -1.2}deg) rotateY(${x * 1.2}deg)`;
+  });
+
+  heroProfile.addEventListener('mouseleave', () => {
+    heroAvatar.style.transform = '';
+    heroProfile.style.transform = '';
+  });
+}
