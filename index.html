@@ -7,6 +7,15 @@
       name="description"
       content="Tony Kimani portfolio - Aerospace Engineering Graduate, Central South University, China & Aspiring Full Stack Developer."
     />
+    <script>
+      (function () {
+        const storageKey = 'portfolio-theme';
+        const savedTheme = localStorage.getItem(storageKey);
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
 
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
@@ -32,6 +41,12 @@
             <li><a href="#skills" class="nav__link">Skills</a></li>
             <li><a href="#projects" class="nav__link">Projects</a></li>
             <li><a href="#contact" class="nav__link">Contact</a></li>
+            <li>
+              <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+                <span class="theme-toggle__icon" id="theme-icon" aria-hidden="true">🌙</span>
+                <span class="theme-toggle__text" id="theme-text">Dark Mode</span>
+              </button>
+            </li>
           </ul>
         </div>
       </nav>
