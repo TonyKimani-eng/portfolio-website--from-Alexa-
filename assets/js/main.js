@@ -42,6 +42,50 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+
+/* ===== Hero typing animation ===== */
+const typingElement = document.getElementById('typing-text');
+const typingRoles = ['Software Developer', 'Engineer', 'Problem Solver'];
+let typingRoleIndex = 0;
+let typingCharacterIndex = 0;
+let deletingRole = false;
+
+function runTypingAnimation() {
+  if (!typingElement) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    typingElement.textContent = typingRoles[0];
+    return;
+  }
+
+  const currentRole = typingRoles[typingRoleIndex];
+
+  if (!deletingRole) {
+    typingCharacterIndex += 1;
+    typingElement.textContent = currentRole.slice(0, typingCharacterIndex);
+
+    if (typingCharacterIndex === currentRole.length) {
+      deletingRole = true;
+      setTimeout(runTypingAnimation, 1350);
+      return;
+    }
+  } else {
+    typingCharacterIndex -= 1;
+    typingElement.textContent = currentRole.slice(0, typingCharacterIndex);
+
+    if (typingCharacterIndex === 0) {
+      deletingRole = false;
+      typingRoleIndex = (typingRoleIndex + 1) % typingRoles.length;
+    }
+  }
+
+  const typingSpeed = deletingRole ? 45 : 95;
+  setTimeout(runTypingAnimation, typingSpeed);
+}
+
+window.addEventListener('load', runTypingAnimation);
+
 /* ===== Projects galleries (Swiper) ===== */
 const projectGalleries = document.querySelectorAll('.project-gallery');
 
