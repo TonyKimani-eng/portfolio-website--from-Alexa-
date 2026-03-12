@@ -584,6 +584,16 @@ ul {
   text-align: center;
 }
 
+
+/* ===== AOS motion tuning ===== */
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+.projects__grid .project[data-aos] {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @media screen and (min-width: 768px) {
   .nav__toggle {
     display: none;
@@ -710,7 +720,8 @@ ul {
   .skills__card,
   .skill-reveal,
   .skill-meter__fill,
-  .typing-cursor {
+  .typing-cursor,
+  [data-aos] {
     transition: none;
     transform: none;
     animation: none;
