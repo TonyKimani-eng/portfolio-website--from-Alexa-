@@ -43,6 +43,25 @@ if (yearSpan) {
 }
 
 
+/* ===== Scroll animations (AOS) ===== */
+function initScrollAnimations() {
+  if (typeof AOS === 'undefined') return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  AOS.init({
+    duration: 780,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 90,
+    delay: 0,
+    disable: reducedMotion,
+  });
+}
+
+window.addEventListener('load', initScrollAnimations);
+
+
 /* ===== Hero typing animation ===== */
 const typingElement = document.getElementById('typing-text');
 const typingRoles = ['Software Developer', 'Engineer', 'Problem Solver'];
