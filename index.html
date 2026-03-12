@@ -18,6 +18,7 @@
     </script>
 
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -54,15 +55,14 @@
     <main>
       <section class="hero section" id="home">
         <div class="hero__background" aria-hidden="true">
-          <span class="hero__orb hero__orb--one"></span>
-          <span class="hero__orb hero__orb--two"></span>
-          <span class="hero__orb hero__orb--three"></span>
+          <span class="hero__wave hero__wave--one"></span>
+          <span class="hero__wave hero__wave--two"></span>
         </div>
         <div class="container hero__content">
-          <div class="hero__intro">
-            <p class="hero__eyebrow">Aerospace Engineering Graduate, CSU, China</p>
-            <h1 class="hero__title">Hi, I’m Tony Kimani</h1>
-            <h2 class="hero__subtitle">I’m a <span class="typing-text" id="typing-text">Software Developer</span><span class="typing-cursor" aria-hidden="true">|</span></h2>
+          <div class="hero__intro" data-aos="fade-up" data-aos-duration="900">
+            <p class="hero__eyebrow" data-aos="fade-up" data-aos-delay="80">Aerospace Engineering Graduate, CSU, China</p>
+            <h1 class="hero__title" data-aos="fade-up" data-aos-delay="140">Hi, I’m Tony Kimani</h1>
+            <h2 class="hero__subtitle" data-aos="fade-up" data-aos-delay="190">I’m a <span class="typing-text" id="typing-text">Software Developer</span><span class="typing-cursor" aria-hidden="true">|</span></h2>
             <p class="hero__description">
               Building clean, practical web applications while transitioning from engineering into software development.
             </p>
@@ -79,7 +79,7 @@
             </ul>
           </div>
 
-          <aside class="hero__profile card" aria-label="Profile information">
+          <aside class="hero__profile card" aria-label="Profile information" data-aos="zoom-in" data-aos-duration="850" data-aos-delay="140">
             <img src="assets/img/profile pic.jpg" alt="Tony Kimani profile photo" class="hero__avatar" />
             <div class="hero__profile-content">
               <p class="hero__profile-label">Current Focus</p>
@@ -91,11 +91,11 @@
 
       <section class="section section--panel" id="about">
         <div class="container narrow">
-          <h2 class="section__title">About</h2>
-          <p class="section__text">
+          <h2 class="section__title" data-aos="fade-up" data-aos-duration="700">About</h2>
+          <p class="section__text" data-aos="fade-up" data-aos-delay="70">
             I am an Aerospace Engineering graduate with a strong interest in technology, problem-solving, and building practical digital solutions. As I transition into software development, I am focusing on full stack web development and strengthening my skills in Python and django framework, web technologies, and modern development workflows.
           </p>
-          <p class="section__text">
+          <p class="section__text" data-aos="fade-up" data-aos-delay="120">
             My engineering background has helped me develop analytical thinking, discipline, and a structured approach to solving problems. I am now applying those same strengths to software development by building projects, learning continuously, and creating user-focused applications.
           </p>
         </div>
@@ -103,9 +103,9 @@
 
       <section class="section" id="skills">
         <div class="container">
-          <h2 class="section__title">Skills</h2>
+          <h2 class="section__title" data-aos="fade-up" data-aos-duration="700">Skills</h2>
           <div class="skills__grid">
-            <article class="card skills__card skill-reveal" data-skill-accent="development">
+            <article class="card skills__card skill-reveal" data-skill-accent="development" data-aos="zoom-in-up" data-aos-delay="40" data-aos-duration="700">
               <h3 class="card__title">Development</h3>
               <ul class="card__list">
                 <li>Python,Django framework</li>
@@ -118,7 +118,7 @@
               </div>
             </article>
 
-            <article class="card skills__card skill-reveal" data-skill-accent="engineering">
+            <article class="card skills__card skill-reveal" data-skill-accent="engineering" data-aos="zoom-in-up" data-aos-delay="120" data-aos-duration="700">
               <h3 class="card__title">Engineering Tools</h3>
               <ul class="card__list">
                 <li>CFD</li>
@@ -132,7 +132,7 @@
               </div>
             </article>
 
-            <article class="card skills__card skill-reveal" data-skill-accent="creative">
+            <article class="card skills__card skill-reveal" data-skill-accent="creative" data-aos="zoom-in-up" data-aos-delay="200" data-aos-duration="700">
               <h3 class="card__title">Other skills</h3>
               <ul class="card__list">
                 <li>SEO skills</li>
@@ -150,13 +150,13 @@
 
       <section class="section section--panel" id="projects">
         <div class="container">
-          <div class="section__heading">
+          <div class="section__heading" data-aos="fade-up" data-aos-duration="700">
             <h2 class="section__title">Projects</h2>
             <p class="section__lead">A few projects that reflect my learning journey and practical software interests.</p>
           </div>
 
           <div class="projects__grid">
-            <article class="project card">
+            <article class="project card" data-aos="fade-up" data-aos-delay="40" data-aos-duration="800">
               <!-- Swiper gallery: replace image paths with your own screenshots anytime -->
               <div class="project__media swiper project-gallery" aria-label="Poker game screenshots gallery">
                 <div class="swiper-wrapper">
@@ -179,7 +179,7 @@
               </div>
             </article>
 
-            <article class="project card">
+            <article class="project card" data-aos="fade-up" data-aos-delay="130" data-aos-duration="800">
               <div class="project__media swiper project-gallery" aria-label="Portfolio website screenshots gallery">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -201,7 +201,7 @@
               </div>
             </article>
 
-            <article class="project card">
+            <article class="project card" data-aos="fade-up" data-aos-delay="220" data-aos-duration="800">
               <div class="project__media swiper project-gallery" aria-label="Wardrobe web app screenshots gallery">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -223,7 +223,7 @@
               </div>
             </article>
 
-            <article class="project card">
+            <article class="project card" data-aos="fade-up" data-aos-delay="310" data-aos-duration="800">
               <div class="project__media swiper project-gallery" aria-label="Engineering design project screenshots gallery">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -256,11 +256,11 @@
 
       <section class="section" id="contact">
         <div class="container narrow">
-          <h2 class="section__title">Contact</h2>
-          <p class="section__text center">
+          <h2 class="section__title" data-aos="fade-up" data-aos-duration="700">Contact</h2>
+          <p class="section__text center" data-aos="fade-up" data-aos-delay="80">
             I am open to internship and junior developer opportunities, collaboration, and tech conversations.
           </p>
-          <div class="contact__links">
+          <div class="contact__links" data-aos="fade-up" data-aos-delay="140">
             <a href="mailto:toniekimngash@gmail.com"><i class="bi bi-envelope-fill" aria-hidden="true"></i><span>Email</span></a>
             <a href="https://www.linkedin.com/in/tonykimaninganga" target="_blank" rel="noreferrer"><i class="bi bi-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
             <a href="https://github.com/TonyKimani-eng" target="_blank" rel="noreferrer"><i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span></a>
@@ -279,6 +279,7 @@
     </footer>
 
     <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
