@@ -111,6 +111,21 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+/* ===== Wardrobe gallery image compatibility fallback ===== */
+const wardrobeImages = document.querySelectorAll('[aria-label="Wardrobe web app screenshots gallery"] .gallery__image');
+
+wardrobeImages.forEach((image) => {
+  if (image.src.endsWith('assets/img/warddrobe3.jpg')) {
+    image.addEventListener(
+      'error',
+      () => {
+        image.src = 'assets/img/warddrobe3.png';
+      },
+      { once: true }
+    );
+  }
+});
+
 
 /* ===== Interactive profile image tilt ===== */
 const heroProfile = document.querySelector('.hero__profile');
@@ -131,4 +146,28 @@ if (heroProfile && heroAvatar && !prefersReducedMotion) {
     heroAvatar.style.transform = '';
     heroProfile.style.transform = '';
   });
+}
+
+/* ===== Skills scroll reveal ===== */
+const skillRevealItems = document.querySelectorAll('.skill-reveal');
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window && skillRevealItems.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: '0px 0px -30px 0px',
+    }
+  );
+
+  skillRevealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  skillRevealItems.forEach((item) => item.classList.add('is-visible'));
 }
