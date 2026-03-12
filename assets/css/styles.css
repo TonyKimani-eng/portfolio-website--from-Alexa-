@@ -167,70 +167,90 @@ ul {
   position: relative;
   overflow: hidden;
   padding-top: calc(var(--space-6) + 1rem);
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/backgroundimage.jpg");
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transform: scale(1.02);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.56) 42%, rgba(15, 23, 42, 0.38) 66%, rgba(15, 23, 42, 0.6) 100%),
+    radial-gradient(120% 70% at 50% 16%, rgba(59, 130, 246, 0.2) 0%, rgba(30, 64, 175, 0) 72%);
+  z-index: 1;
 }
 
 .hero__background {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
+  overflow: hidden;
 }
 
-.hero__orb {
+.hero__wave {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.38;
-  animation: floatOrb 15s ease-in-out infinite;
+  top: 2%;
+  left: -60%;
+  width: 220%;
+  height: clamp(150px, 34vh, 300px);
+  opacity: 0.26;
+  mix-blend-mode: screen;
+  will-change: transform;
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  background-image:
+    radial-gradient(130% 72% at 50% 0%, transparent 63%, rgba(255, 255, 255, 0.7) 66%, rgba(132, 204, 255, 0.68) 68%, transparent 72%),
+    radial-gradient(130% 68% at 50% 100%, transparent 60%, rgba(165, 243, 252, 0.34) 64%, transparent 69%);
+  filter: blur(0.4px);
+  animation: heroCoilyWave 24s linear infinite;
 }
 
-.hero__orb--one {
-  width: clamp(220px, 30vw, 360px);
-  height: clamp(220px, 30vw, 360px);
-  top: 4%;
-  left: -8%;
-  background: radial-gradient(circle at 30% 30%, #93c5fd, transparent 70%);
+.hero__wave--two {
+  top: 15%;
+  opacity: 0.18;
+  transform: translate3d(0, 0, 0) scaleY(0.9);
+  background-size: 42% 100%;
+  animation-duration: 32s;
+  animation-direction: reverse;
 }
 
-.hero__orb--two {
-  width: clamp(180px, 22vw, 300px);
-  height: clamp(180px, 22vw, 300px);
-  top: 42%;
-  right: -6%;
-  animation-delay: -5s;
-  background: radial-gradient(circle at 50% 50%, #c4b5fd, transparent 72%);
-}
-
-.hero__orb--three {
-  width: clamp(160px, 20vw, 260px);
-  height: clamp(160px, 20vw, 260px);
-  bottom: -10%;
-  left: 38%;
-  animation-delay: -9s;
-  background: radial-gradient(circle at 50% 50%, #60a5fa, transparent 70%);
-}
-
-@keyframes floatOrb {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
+@keyframes heroCoilyWave {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  50% {
-    transform: translate3d(0, -16px, 0) scale(1.08);
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
   gap: var(--space-4);
   align-items: start;
 }
 
 .hero__intro {
-  background: var(--gradient-hero);
-  border: 1px solid var(--color-border);
+  background: linear-gradient(145deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.84));
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(226, 232, 240, 0.72);
   border-radius: 1rem;
   padding: clamp(1.4rem, 3vw, 2.2rem);
 }
@@ -702,6 +722,8 @@ ul {
   border: 1px solid #bfdbfe;
 }
 
+
+
 @media screen and (min-width: 768px) {
   .projects__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -714,7 +736,7 @@ ul {
 
 
 @media (prefers-reduced-motion: reduce) {
-   .hero__orb,
+   .hero__wave,
   .hero__profile,
   .hero__avatar,
   .skills__card,
@@ -727,7 +749,7 @@ ul {
     animation: none;
   }
 
-  .hero__orb {
+  .hero__wave {
     animation: none;
   }
 
