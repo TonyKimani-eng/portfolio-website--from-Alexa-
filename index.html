@@ -8,6 +8,7 @@
       content="Tony Kimani portfolio - Aerospace Engineering Graduate, Central South University, China & Aspiring Full Stack Developer."
     />
 
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <title>Tony Kimani | Portfolio</title>
@@ -123,7 +124,20 @@
 
           <div class="projects__grid">
             <article class="project card">
-              <div class="project__media" role="img" aria-label="Poker game screenshot placeholder">Project screenshot</div>
+              <!-- Swiper gallery: replace image paths with your own screenshots anytime -->
+              <div class="project__media swiper project-gallery" aria-label="Poker game screenshots gallery">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="assets/img/portfolio1.jpg" alt="Poker game screenshot 1" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/portfolio2.jpg" alt="Poker game screenshot 2" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/portfolio3.jpg" alt="Poker game screenshot 3" class="gallery__image" />
+                  </div>
+                </div>
+              </div>
               <div class="project__content">
                 <h3 class="card__title">Poker Game in Python</h3>
                 <p class="project__description">
@@ -133,7 +147,19 @@
             </article>
 
             <article class="project card">
-              <div class="project__media" role="img" aria-label="Portfolio website screenshot placeholder">Project screenshot</div>
+              <div class="project__media swiper project-gallery" aria-label="Portfolio website screenshots gallery">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="assets/img/project.png" alt="Portfolio website screenshot 1" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/perfil.png" alt="Portfolio website screenshot 2" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/about.jpg" alt="Portfolio website screenshot 3" class="gallery__image" />
+                  </div>
+                </div>
+              </div>
               <div class="project__content">
                 <h3 class="card__title">Personal Portfolio Website</h3>
                 <p class="project__description">
@@ -143,7 +169,19 @@
             </article>
 
             <article class="project card">
-              <div class="project__media" role="img" aria-label="Wardrobe app screenshot placeholder">Project screenshot</div>
+              <div class="project__media swiper project-gallery" aria-label="Wardrobe web app screenshots gallery">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="assets/img/download.jpeg" alt="Wardrobe web app screenshot 1" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/testimonial1.jpg" alt="Wardrobe web app screenshot 2" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/testimonial2.jpg" alt="Wardrobe web app screenshot 3" class="gallery__image" />
+                  </div>
+                </div>
+              </div>
               <div class="project__content">
                 <h3 class="card__title">Wardrobe Web App</h3>
                 <p class="project__description">
@@ -151,6 +189,34 @@
                 </p>
               </div>
             </article>
+
+            <article class="project card">
+              <div class="project__media swiper project-gallery" aria-label="Engineering design project screenshots gallery">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="assets/img/engineering/project1.jpg" alt="Engineering design project screenshot 1" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/engineering/project2.jpg" alt="Engineering design project screenshot 2" class="gallery__image" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="assets/img/engineering/project3.jpg" alt="Engineering design project screenshot 3" class="gallery__image" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="card__title">Engineering Design Projects</h3>
+                <p class="project__description">
+                  Engineering design projects developed using ANSYS Workbench and SolidWorks. These projects involve mechanical design, simulation, and performance analysis tailored to meet specific client or engineering requirements.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Clicked image preview modal -->
+          <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
+            <button class="gallery-modal__close" id="gallery-modal-close" aria-label="Close image preview">×</button>
+            <img src="" alt="Selected project preview" id="gallery-modal-image" class="gallery-modal__image" />
           </div>
         </div>
       </section>
@@ -178,6 +244,7 @@
       </div>
     </footer>
 
+    <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
